@@ -1,0 +1,70 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: #FFFFFF;
+    --foreground: #111827;
+    --card: #FFFFFF;
+    --card-foreground: #111827;
+    --border: #E5E7EB;
+    --muted: #6B7280;
+  }
+
+  .dark {
+    --background: #09090B;
+    --foreground: #FAFAFA;
+    --card: #18181B;
+    --card-foreground: #FAFAFA;
+    --border: #27272A;
+    --muted: #A1A1AA;
+  }
+
+  body {
+    @apply bg-[#FAFAFA] dark:bg-[#09090B] text-foreground-light dark:text-foreground-dark min-h-screen font-sans antialiased;
+  }
+}
+
+/* 
+ * Anular as setas nativas de incremento/decremento (spin buttons) em inputs type="number"
+ */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+/* 
+ * Anular botão de reveal nativo duplicado do Microsoft Edge/IE em inputs de senha
+ */
+input::-ms-reveal,
+input::-ms-clear {
+  display: none !important;
+}
+
+/* 
+ * Anular e normalizar os estilos padrão de autofill dos navegadores (Chrome/Edge/Safari)
+ */
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active {
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: #111827 !important;
+  transition: background-color 999999s ease-in-out 0s;
+  box-shadow: inset 0 0 0 1000px #FAFAFA !important;
+}
+
+.dark input:-webkit-autofill,
+.dark input:-webkit-autofill:hover, 
+.dark input:-webkit-autofill:focus, 
+.dark input:-webkit-autofill:active {
+  -webkit-text-fill-color: #FAFAFA !important;
+  box-shadow: inset 0 0 0 1000px #121215 !important;
+}
